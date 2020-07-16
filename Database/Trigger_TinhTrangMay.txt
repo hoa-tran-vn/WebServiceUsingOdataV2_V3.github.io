@@ -1,0 +1,94 @@
+CREATE TRIGGER TG_TinhTrangMay ON dbo.TinhTrangMay for UPDATE,INSERT AS 
+BEGIN 
+	DECLARE @day INT = DAY(GETDATE()), @month INT = MONTH(GETDATE()), @year INT = YEAR(GETDATE()) 
+	DECLARE @machineId INT
+	SELECT @machineId = may FROM Inserted 
+
+	DECLARE @maxDate DATETIME
+	SELECT @maxDate = MAX(NgayCapNhat) FROM dbo.ThoiGianMay WHERE may = @machineId
+
+	DECLARE @machineState INT
+	SELECT @machineState = trangThai FROM Inserted
+
+	DECLARE @beforeDate DATETIME
+	SELECT @beforeDate = NgayCapNhat FROM dbo.ThoiGianMay WHERE may =@machineId AND (DAY(NgayCapNhat) = @day) AND (MONTH(NgayCapNhat) = @month) AND (YEAR(NgayCapNhat) = @year)
+
+	DECLARE @beforeState INT
+	SELECT @beforeState = Trangthaimay FROM dbo.ThoiGianMay WHERE may =@machineId AND (DAY(NgayCapNhat) = @day AND MONTH(NgayCapNhat) = @month AND YEAR(NgayCapNhat) = @year)
+	DECLARE @RunningTimeTem FLOAT = 0, @WaitTimeTem INT = 0 , @RunErrTimeTem INT = 0, @SetUpTimeTem INT = 0, @OffTimetem INT = 0, @tem INT
+	SET @tem = (DATEPART(HOUR, GETDATE()) - DATEPART(HOUR, @beforeDate))*60 + DATEPART(MINUTE, GETDATE()) - DATEPART(MINUTE, @beforeDate) 
+	-- 0 : wait, 1 : setup, 2 : standby, 3 : run, 4 : Error, 5 : Off
+	IF (@machineState = @beforeState)
+		BEGIN
+			IF(@machineState = 2 OR @machineState =3)
+				SET @RunningTimeTem = @tem
+			ELSE IF(@machineState = 0)
+				SELECT @WaitTimeTem = @tem
+			ELSE IF(@machineState = 4)
+				SELECT @RunErrTimeTem = @tem
+			ELSE IF(@machineState = 1)
+				SELECT @SetUpTimeTem = @tem
+			ELSE
+				SELECT @OffTimetem = @tem
+		END
+	
+	DECLARE @energy FLOAT
+	SELECT @energy = CongSuat FROM inserted 
+	SET @energy = @energy*@RunningTimeTem/60
+	DECLARE @RunTime INT
+	SELECT @RunTime = RunningTime FROM dbo.ThoiGianMay
+	IF(@RunTime = 0 AND @RunningTimeTem = 0)
+		BEGIN
+			SET @RunningTimeTem = 0.1
+		END
+
+	
+	IF (DAY(@maxDate) = @day and MONTH(@maxDate) = @month and YEAR(@maxDate) = @year)
+		BEGIN
+			
+			UPDATE dbo.ThoiGianMay SET congsuat = (NangLuong+@energy)*60/(RunningTime+@RunningTimeTem),
+								RunningTime = RunningTime + @RunningTimeTem,
+								WaitTime = WaitTime + @WaitTimeTem,
+								RunErrTime = RunErrTime +@RunErrTimeTem,
+								SetUpTime = SetUpTime + @SetUpTimeTem,
+								OffTime = OffTime + @OffTimetem,
+								Trangthaimay = @machineState,
+								NgayCapNhat = GETDATE(),
+								NangLuong = NangLuong + @energy
+								
+							WHERE (DAY(NgayCapNhat) = @day AND MONTH(NgayCapNhat) = @month AND YEAR(NgayCapNhat) = @year)
+								AND may = @machineId
+		END
+	ELSE
+		BEGIN
+			INSERT dbo.ThoiGianMay
+			(
+			    NgayCapNhat,
+			    may,
+			    boGiamSat,
+			    Trangthaimay,
+			    RunningTime,
+			    WaitTime,
+			    RunErrTime,
+			    SetUpTime,
+			    OffTime,
+				NangLuong,
+			    congsuat
+			)
+			VALUES
+			(   GETDATE(), -- NgayCapNhat - datetime
+			    @machineId,         -- may - int
+			    NULL,         -- boGiamSat - int
+			    @machineState,         -- Trangthaimay - int
+			    0,         -- RunningTime - int
+			    0,         -- WaitTime - int
+			    0,         -- RunErrTime - int
+			    0,         -- SetUpTime - int
+			    0,         -- OffTime - int
+				0.0,	   -- NangLuong - float
+			    0.0        -- congsuat - float
+			    )
+		END
+		
+
+END

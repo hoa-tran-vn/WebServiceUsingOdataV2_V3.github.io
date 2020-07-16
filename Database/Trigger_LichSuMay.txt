@@ -1,0 +1,63 @@
+CREATE TRIGGER TG_LichSuMay ON dbo.LichSuMay AFTER INSERT AS 
+BEGIN
+	DECLARE @machineState INT 
+	SELECT @machineState = trangThai FROM inserted
+	DECLARE @power FLOAT 
+	SELECT @power = CongSuatPhaA + CongSuatPhaB + CongSuatPhaC FROM inserted 
+	DECLARE @machineId INT
+	SELECT @machineId = GiamSatMay FROM inserted
+	DECLARE @date DATETIME
+	SELECT @date = ThoiGianCapNhat FROM inserted
+	-- 0 : wait, 1 : setup, 2 : standby, 3 : run, 4 : Error, 5 : Off
+	IF(@machineState = 0 OR @machineState = 1 OR @machineState = 2 OR @machineState = 3 OR @machineState = 4 OR @machineState = 5 )
+		BEGIN
+			SET @machineState = @machineState
+		END
+	ELSE
+		BEGIN
+			IF (@power>1)
+				BEGIN
+					SET @machineState = 3
+				END
+			ELSE 
+				BEGIN
+					SET @machineState = 5
+				END
+		END
+	
+	DECLARE @count INT = 0
+	SELECT @count = COUNT(*) FROM dbo.TinhTrangMay WHERE may =@machineId
+
+	IF(@count>0)
+		BEGIN
+			UPDATE dbo.TinhTrangMay SET CongSuat = @power, 
+										trangThai = @machineState,
+										ThoiGianCapNhatCuoiCung = @date
+									WHERE may = @machineId
+		END
+	ELSE
+		BEGIN
+			INSERT INTO dbo.TinhTrangMay
+			(
+			    boGiamSat,
+			    may,
+			    trangThai,
+			    CongSuat,
+			    ThoiGianCapNhatCuoiCung,
+			    HinhAnh,
+			    thoigianMay
+			)
+			VALUES
+			(   NULL,         -- boGiamSat - int
+			    @machineId,         -- may - int
+			    @machineState,         -- trangThai - int
+			    @power,       -- CongSuat - float
+			    @date, -- ThoiGianCapNhatCuoiCung - datetime
+			    NULL,      -- HinhAnh - varbinary(max)
+			    NULL          -- thoigianMay - int
+			    )
+		END
+
+	DELETE dbo.LichSuMay
+								
+END

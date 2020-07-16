@@ -1,0 +1,57 @@
+CREATE TRIGGER TG_ThoiGianMay ON dbo.ThoiGianMay FOR INSERT AS 
+BEGIN 
+	DECLARE @month INT = MONTH(GETDATE()), @year INT = YEAR(GETDATE())
+	DECLARE @machineId INT
+	SELECT @machineId = may FROM inserted
+
+	DECLARE @maxDate DATE
+	SELECT @maxDate = MAX(NgayCapNhat) FROM dbo.ThoiGianMay_Thang WHERE may = @machineId
+
+	DECLARE @RunningTimeTem INT, @WaitTimeTem INT, @RunErrTimeTem INT, @SetUpTimeTem INT, @OffTimetem INT, @power FLOAT, @energy FLOAT
+	SELECT @RunningTimeTem = SUM(ThoiGianMay.RunningTime), 
+		   @WaitTimeTem = SUM(ThoiGianMay.WaitTime), 
+		   @RunErrTimeTem = SUM(ThoiGianMay.RunErrTime), 
+		   @OffTimetem = SUM(ThoiGianMay.OffTime), 
+		   @power = AVG(ThoiGianMay.congsuat), 
+		   @energy = SUM(ThoiGianMay.NangLuong) FROM dbo.ThoiGianMay WHERE may = @machineId AND (MONTH(ThoiGianMay.NgayCapNhat) = @month AND YEAR(ThoiGianMay.NgayCapNhat) = @year)
+
+	IF(MONTH(@maxdate)=@month AND YEAR(@maxdate) = @year)
+		BEGIN
+			UPDATE dbo.ThoiGianMay_Thang SET RunningTime = @RunningTimeTem,
+											 WaitTime = @WaitTimeTem,
+											 RunErrTime = @RunErrTimeTem,
+											 OffTime = @OffTimetem,
+											 congsuat = @power,
+											 NangLuong = @energy
+										 WHERE may = @machineId AND (MONTH(ThoiGianMay_Thang.NgayCapNhat) = @month AND YEAR(ThoiGianMay_Thang.NgayCapNhat) = @year)
+		END
+	ELSE
+		BEGIN
+			INSERT INTO dbo.ThoiGianMay_Thang
+			(
+			    NgayCapNhat,
+			    may,
+			    boGiamSat,
+			    RunningTime,
+			    WaitTime,
+			    RunErrTime,
+			    SetUpTime,
+			    OffTime,
+			    congsuat,
+			    NangLuong
+			)
+			VALUES
+			(   GETDATE(), -- NgayCapNhat - date
+			    @machineId,         -- may - int
+			    NULL,         -- boGiamSat - int
+			    0,         -- RunningTime - int
+			    0,         -- WaitTime - int
+			    0,         -- RunErrTime - int
+			    0,         -- SetUpTime - int
+			    0,         -- OffTime - int
+			    0.0,       -- congsuat - float
+			    0.0        -- NangLuong - float
+			    )
+		END
+	
+END

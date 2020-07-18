@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:title="Home"
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_icon"/>
+        <item android:title="Days"
+            android:id="@+id/nav_days"
+            android:icon="@drawable/ic_days_icon"/>
+        <item android:title="Weeks"
+            android:id="@+id/nav_weeks"
+            android:icon="@drawable/ic_weeks_icon"/>
+        <item android:title="Months"
+            android:id="@+id/nav_months"
+                android:icon="@drawable/months_icon"
+            />
+    </group>
+
+    <item android:title="User">
+        <menu>
+            <group android:checkableBehavior="single">
+                    <item android:title="User Profile"
+                        android:id="@+id/nav_profile"
+                        android:icon="@drawable/user_profile"
+                        />
+                    <item android:title="Notification"
+                        android:id="@+id/nav_notification"
+                        android:icon="@drawable/nofication_icon"
+                        />
+                    <item android:title="Sign In"
+                        android:icon="@drawable/sign_in_icon"
+                        android:id="@+id/nav_SignIn"/>
+
+            </group>
+        </menu>
+    </item>
+    <item android:title="Share">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item android:title="Rating us"
+                    android:icon="@drawable/share_icon"/>
+            </group>
+        </menu>
+    </item>
+</menu>

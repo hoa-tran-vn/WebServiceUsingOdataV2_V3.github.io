@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/BackGround_four"
+    tools:context=".MachineDetails">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/Relate_layout_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:background="@color/CardBackGround_four_opt_one"
+            >
+
+            <ImageView
+                android:id="@+id/MachineDetail_backBtn"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:onClick="Back"
+                android:background="@drawable/back_button_shape"
+                android:src="@drawable/back_icon" />
+
+            <ImageView
+                android:transitionName="Notification_transition"
+                android:id="@+id/Dashboard_notificationBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/nofication_icon" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/card_shape"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/MachineDetail_Date_Card_One"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/barlow_medium"
+                        android:text="27-July"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor_four_opt_two"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/barlow_light"
+                        android:text= "Machine overview in a day"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor_four_opt_two"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_marginLeft="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/barlow_medium"
+                            android:text="Machine ID :"
+                            android:textColor="@color/ButtonColor_four"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/MachineDetail_MachineID"
+                            android:layout_marginRight="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/barlow_light"
+                            android:text="K1811"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/TextColor_four_opt_two"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_marginLeft="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/barlow_medium"
+                            android:text="Machine status :"
+                            android:textColor="@color/ButtonColor_four"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/MachineDetail_MachineStatus"
+                            android:layout_marginRight="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/barlow_light"
+                            android:text="Run"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/TextColor_four_opt_two"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_marginLeft="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/barlow_medium"
+                            android:text="Employee :"
+                            android:textColor="@color/ButtonColor_four"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/MachineDetail_WorkerName"
+                            android:layout_marginRight="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/barlow_light"
+                            android:text="Mr John"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/TextColor_four_opt_two"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_marginLeft="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/barlow_medium"
+                            android:text="Products :"
+                            android:textColor="@color/ButtonColor_four"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/MachineDetail_ProductName"
+                            android:layout_marginRight="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/barlow_light"
+                            android:text="DKAS"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/TextColor_four_opt_two"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_marginLeft="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/barlow_medium"
+                            android:text="Time Start :"
+                            android:textColor="@color/ButtonColor_four"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/MachineDetail_TimeStart"
+                            android:layout_width="117dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/barlow_light"
+                            android:text="8-am"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/TextColor_four_opt_two"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <Button
+                        android:visibility="invisible"
+                        android:id="@+id/MachineDetail_moreInforBtn"
+                        android:transitionName="Information_Btn_transition"
+                        android:onClick="MoreInforMation"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/button_shape"
+                        android:fontFamily="@font/barlow_medium"
+                        android:layout_marginBottom="20dp"
+                        android:text="More information"
+                        android:textAllCaps="false"
+                        android:textColor="@color/BackGround_four" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:padding="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/card_shape"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/MachineDetail_Date_Card_Two"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/barlow_medium"
+                        android:text="27-July"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor_four_opt_two"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/barlow_light"
+                        android:text= "Machine status in a day"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor_four_opt_two"
+                         />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:padding="20dp">
+
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/MachineDetail_linechart"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginBottom="5dp"
+                    android:padding="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:background="@drawable/card_shape"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/MachineDetail_Date_Card_Three"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/barlow_medium"
+                        android:text="27-July"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor_four_opt_two"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="350dp"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/MachineDetail_PipeChart"
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/MachineDetail_ProductivityTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="96%"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        android:fontFamily="@font/barlow_medium"
+                        android:textColor="@color/TextColor_four_opt_two"/>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textColor="@color/TextColor_four_opt_two"
+                        android:text="Machine productivity in the day"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/MachineDetail_bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_menu"
+        android:background="@color/CardBackGround_four_opt_one"
+        app:itemIconTint="@color/ButtonColor_four"
+        app:itemTextColor="@color/ButtonColor_four">
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</RelativeLayout>

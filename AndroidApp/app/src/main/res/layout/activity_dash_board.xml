@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/Dashboard_drawerLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashBoard"
+    android:background="@color/BackGround_four">
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_gravity="start"
+        android:id="@+id/Dashboard_drawer_nav"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/BackGround_four"
+        app:headerLayout="@layout/navigation_drawer_header"
+        app:itemIconTint="@color/IconColor_four"
+        app:itemTextColor="@color/TextColor_four_opt_two"
+        app:menu="@menu/navigation_drawer_menu"
+        />
+
+        <RelativeLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/Relate_layout_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/CardBackGround_four_opt_two">
+
+                <ImageView
+                    android:id="@+id/Dashboard_menuBtn"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:background="@drawable/back_button_shape"
+                    android:src="@drawable/menu_icon" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                       android:background="@color/CardBackGround_four_opt_two"
+                        android:paddingLeft="1dp"
+                        android:paddingRight="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2">
+
+                        <ImageView
+                            android:id="@+id/Dashboard_Notification_Bell"
+                            android:transitionName="Notification_transition"
+                            android:layout_centerInParent="true"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/nofication_icon"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:background="@color/CardBackGround_four_opt_one"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:fontFamily="@font/barlow_medium"
+                            android:layout_centerVertical="true"
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Exit"
+                            android:textColor="@color/TextColor_four_opt_two"/>
+
+                        <ImageView
+                            android:id="@+id/Dashboard_exitBtn"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/close_icon"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Relate_layout_one"
+                android:layout_marginBottom="80dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/Dashboard_maps"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/card_shape"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginRight="20dp"
+                                android:fontFamily="@font/barlow_medium"
+                                android:text="Duy Khanh"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/TextColor_four_opt_two"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:textAlignment="textStart"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Down stair machine locaiton map"
+                                android:layout_marginLeft="20dp"
+                                android:fontFamily="@font/barlow_light"
+                                android:textColor="@color/TextColor_four_opt_two"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+
+                                <LinearLayout
+                                    android:id="@+id/Linear_one"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:padding="20dp">
+
+                                    <TextView
+                                        android:id="@+id/CM1"
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:fontFamily="@font/barlow_bold"
+                                        android:onClick="Detail"
+                                        android:text="K91"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/TextColor_four_opt_two" />
+
+                                    <TextView
+                                        android:id="@+id/DK2"
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:layout_marginTop="20dp"
+                                        android:fontFamily="@font/barlow_bold"
+                                        android:onClick="Detail"
+                                        android:text="DK2"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/TextColor_three" />
+
+                                    <Button
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="@drawable/machineshape"
+                                        android:fontFamily="@font/barlow_bold"
+                                        android:onClick="Detail"
+                                        android:text="K91"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/TextColor_three" />
+
+                                    <Button
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="@drawable/machineshape"
+                                        android:fontFamily="@font/barlow_bold"
+                                        android:onClick="Detail"
+                                        android:text="K91"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/TextColor_three" />
+
+                                    <Button
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="@drawable/machineshape"
+                                        android:fontFamily="@font/barlow_bold"
+                                        android:onClick="Detail"
+                                        android:text="K91"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/TextColor_three" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/Linear_two"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/Linear_one"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:padding="20dp">
+
+                                    <TextView
+                                        android:transitionName="Machine"
+                                        android:id="@+id/DK1"
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:onClick="Detail"
+                                        android:text="K22"
+                                        android:textColor="@color/TextColor_three" />
+
+                                    <TextView
+                                        android:id="@+id/E1"
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:layout_marginTop="20dp"
+                                        android:onClick="Detail"
+                                        android:text="E1"
+                                        android:textColor="@color/TextColor_three" />
+
+                                    <Button
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:layout_marginTop="100dp"
+                                        android:background="@drawable/machineshape"
+                                        android:onClick="Detail"
+                                        android:text="K22"
+                                        android:textColor="@color/TextColor_three" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/Linear_three"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="150dp"
+                                    android:layout_toRightOf="@id/Linear_two"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:padding="20dp">
+
+                                    <Button
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:background="@drawable/machineshape"
+                                        android:text="X11"
+                                        android:textColor="@color/TextColor_three" />
+
+                                    <Button
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="@drawable/machineshape"
+                                        android:text="X11"
+                                        android:textColor="@color/TextColor_three" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/Dashboard_maps_upstair"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/card_shape"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:layout_marginRight="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Duy Khanh"
+                                android:textAlignment="textStart"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginLeft="20dp"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/barlow_medium"
+                                android:textColor="@color/TextColor_four_opt_two"/>
+
+                            <TextView
+                                android:textAlignment="textStart"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Up stair machine locaiton map"
+                                android:layout_marginLeft="20dp"
+                                android:fontFamily="@font/barlow_light"
+                                android:textColor="@color/TextColor_four_opt_two"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:padding="20dp">
+
+                                    <Button
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="@drawable/machineshape"
+                                        android:fontFamily="@font/barlow_bold"
+                                        android:onClick="Detail"
+                                        android:text="K91"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/TextColor_three" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/Linear_one"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:padding="20dp">
+
+                                    <Button
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:background="@drawable/machineshape"
+                                        android:onClick="Detail"
+                                        android:text="K22"
+                                        android:textColor="@color/TextColor_three" />
+
+                                    <Button
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="@drawable/machineshape"
+                                        android:onClick="Detail"
+                                        android:text="K22"
+                                        android:textColor="@color/TextColor_three" />
+
+                                    <Button
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:layout_marginTop="100dp"
+                                        android:background="@drawable/machineshape"
+                                        android:onClick="Detail"
+                                        android:text="K22"
+                                        android:textColor="@color/TextColor_three" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="150dp"
+                                    android:layout_toRightOf="@id/Linear_two"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:padding="20dp">
+
+                                    <Button
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:background="@drawable/machineshape"
+                                        android:text="X11"
+                                        android:textColor="@color/TextColor_three" />
+
+                                    <Button
+                                        android:layout_width="70dp"
+                                        android:layout_height="60dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="@drawable/machineshape"
+                                        android:text="X11"
+                                        android:textColor="@color/TextColor_three" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/Dashboard_Bottom_nav"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/CardBackGround_four_opt_one"
+                app:itemIconTint="@color/ButtonColor_four"
+                app:itemTextColor="@color/ButtonColor_four"
+                app:menu="@menu/bottom_menu">
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+        </RelativeLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
